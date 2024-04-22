@@ -22,6 +22,7 @@ compiler: unsupported syscall: epoll_wait due to missing const __NR_epoll_wait [
 compiler: unsupported syscall: signalfd due to missing const __NR_signalfd [arm64]
 compiler: unsupported syscall: eventfd due to missing const __NR_eventfd [arm64]
 compiler: unsupported syscall: fadvise64 due to missing const __NR_fadvise64 [arm]
+compiler: unsupported syscall: fadvise64_64 due to missing const __NR_fadvise64_64 [arm64]
 compiler: unsupported syscall: memfd_secret due to missing const __NR_memfd_secret [arm]
 compiler: unsupported syscall: mknod due to missing const __NR_mknod [arm64]
 compiler: unsupported syscall: chmod due to missing const __NR_chmod [arm64]

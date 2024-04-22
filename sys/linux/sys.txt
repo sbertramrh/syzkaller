@@ -200,6 +200,9 @@ madvise(addr vma, len len[addr], advice flags[madvise_flags])
 process_madvise(pidfd fd_pidfd, vec ptr[in, array[iovec_in]], vlen len[vec], advice flags[madvise_flags], flags const[0])
 process_mrelease(pidfd fd_pidfd, flags const[0])
 fadvise64(fd fd, offset fileoff, len intptr, advice flags[fadvise_flags])
+fadvise64_64(fd fd, offset fileoff, len intptr, advice flags[fadvise_flags])
+swapon(specialfile ptr[in, filename], swap_flags flags[swapon_flags])
+swapoff(specialfile ptr[in, filename])
 readahead(fd fd, off intptr, count intptr)
 mbind(addr vma, len len[addr], mode flags[mbind_mode], nodemask ptr[in, int64], maxnode intptr, flags flags[mbind_flags])
 move_pages(pid pid, nr len[pages], pages ptr[in, array[vma]], nodes ptr[in, array[int32], opt], status ptr[out, array[int32]], flags flags[move_pages_flags])
@@ -1287,6 +1290,7 @@ open_mode = S_IRUSR, S_IWUSR, S_IXUSR, S_IRGRP, S_IWGRP, S_IXGRP, S_IROTH, S_IWO
 resolve_flags = RESOLVE_CACHED, RESOLVE_BENEATH, RESOLVE_IN_ROOT, RESOLVE_NO_MAGICLINKS, RESOLVE_NO_SYMLINKS, RESOLVE_NO_XDEV
 madvise_flags = MADV_NORMAL, MADV_RANDOM, MADV_SEQUENTIAL, MADV_WILLNEED, MADV_DONTNEED, MADV_REMOVE, MADV_DONTFORK, MADV_DOFORK, MADV_HWPOISON, MADV_SOFT_OFFLINE, MADV_MERGEABLE, MADV_UNMERGEABLE, MADV_HUGEPAGE, MADV_NOHUGEPAGE, MADV_DONTDUMP, MADV_DODUMP, MADV_WIPEONFORK, MADV_KEEPONFORK, MADV_COLD, MADV_PAGEOUT, MADV_POPULATE_READ, MADV_POPULATE_WRITE, MADV_COLLAPSE
 fadvise_flags = POSIX_FADV_NORMAL, POSIX_FADV_SEQUENTIAL, POSIX_FADV_RANDOM, POSIX_FADV_NOREUSE, POSIX_FADV_WILLNEED, POSIX_FADV_DONTNEED
+swapon_flags = SWAP_FLAG_DISCARD, SWAP_FLAG_DISCARD_ONCE, SWAP_FLAG_DISCARD_PAGES, SWAP_FLAG_PREFER, SWAP_FLAG_PRIO_MASK
 move_pages_flags = MPOL_MF_MOVE, MPOL_MF_MOVE_ALL
 msync_flags = MS_ASYNC, MS_SYNC, MS_INVALIDATE
 mmap_prot = PROT_EXEC, PROT_READ, PROT_WRITE, PROT_SEM, PROT_GROWSDOWN, PROT_GROWSUP
