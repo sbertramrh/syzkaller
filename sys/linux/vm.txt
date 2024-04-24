@@ -1,0 +1,243 @@
+# Copyright 2024 syzkaller project authors. All rights reserved.
+# Use of this source code is governed by Apache 2 LICENSE that can be found in the LICENSE file.
+
+# all vm procfs entries
+
+#/proc/sys/vm/admin_reserve_kbytes
+resource fd_ark[fd]
+openat$ark(fd const[AT_FDCWD], file ptr[in, string[procfs_ark_file]], flags const[O_WRONLY], mode const[0]) fd_ark
+write$ark(fd fd_ark, val ptr[in, string["8192"]], len len[val])
+procfs_ark_file = "/proc/sys/vm/admin_reserve_kbytes"
+
+#/proc/sys/vm/compaction_proactiveness
+resource fd_cp[fd]
+openat$cp(fd const[AT_FDCWD], file ptr[in, string[procfs_cp_file]], flags const[O_WRONLY], mode const[0]) fd_cp
+write$cp(fd fd_cp, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_cp_file = "/proc/sys/vm/compaction_proactiveness"
+
+#/proc/sys/vm/laptop_mode
+resource fd_lm[fd]
+openat$lm(fd const[AT_FDCWD], file ptr[in, string[procfs_lm_file]], flags const[O_WRONLY], mode const[0]) fd_lm
+write$lm(fd fd_lm, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_lm_file = "/proc/sys/vm/laptop_mode"
+
+#/proc/sys/vm/min_slab_ratio
+resource fd_ms_ratio[fd]
+openat$ms_ratio(fd const[AT_FDCWD], file ptr[in, string[procfs_ms_ratio_file]], flags const[O_WRONLY], mode const[0]) fd_ms_ratio
+write$ms_ratio(fd fd_ms_ratio, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_ms_ratio_file = "/proc/sys/vm/min_slab_ratio"
+
+#/proc/sys/vm/min_unmapped_ratio
+resource fd_mur[fd]
+openat$mur(fd const[AT_FDCWD], file ptr[in, string[procfs_mur_file]], flags const[O_WRONLY], mode const[0]) fd_mur
+write$mur(fd fd_mur, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_mur_file = "/proc/sys/vm/min_unmapped_ratio"
+
+#/proc/sys/vm/overcommit_ratio
+resource fd_or[fd]
+openat$or(fd const[AT_FDCWD], file ptr[in, string[procfs_or_file]], flags const[O_WRONLY], mode const[0]) fd_or
+write$or(fd fd_or, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_or_file = "/proc/sys/vm/overcommit_ratio"
+
+#/proc/sys/vm/page-cluster
+resource fd_pc[fd]
+openat$pc(fd const[AT_FDCWD], file ptr[in, string[procfs_pc_file]], flags const[O_WRONLY], mode const[0]) fd_pc
+write$pc(fd fd_pc, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_pc_file = "/proc/sys/vm/page-cluster"
+
+#/proc/sys/vm/page_lock_unfairness
+resource fd_plu[fd]
+openat$plu(fd const[AT_FDCWD], file ptr[in, string[procfs_plu_file]], flags const[O_WRONLY], mode const[0]) fd_plu
+write$plu(fd fd_plu, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_plu_file = "/proc/sys/vm/page_lock_unfairness"
+
+#/proc/sys/vm/percpu_pagelist_high_fraction
+resource fd_pphf[fd]
+openat$pphf(fd const[AT_FDCWD], file ptr[in, string[procfs_pphf_file]], flags const[O_WRONLY], mode const[0]) fd_pphf
+write$pphf(fd fd_pphf, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_pphf_file = "/proc/sys/vm/percpu_pagelist_high_fraction"
+
+#/proc/sys/vm/stat_interval
+resource fd_st[fd]
+openat$st(fd const[AT_FDCWD], file ptr[in, string[procfs_st_file]], flags const[O_WRONLY], mode const[0]) fd_st
+write$st(fd fd_st, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_st_file = "/proc/sys/vm/stat_interval"
+
+#/proc/sys/vm/stat_refresh
+resource fd_statr[fd]
+openat$statr(fd const[AT_FDCWD], file ptr[in, string[procfs_statr_file]], flags const[O_WRONLY], mode const[0]) fd_statr
+write$statr(fd fd_statr, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_statr_file = "/proc/sys/vm/stat_refresh"
+
+#/proc/sys/vm/swappiness
+resource fd_swap[fd]
+openat$swap(fd const[AT_FDCWD], file ptr[in, string[procfs_swap_file]], flags const[O_WRONLY], mode const[0]) fd_swap
+write$swap(fd fd_swap, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_swap_file = "/proc/sys/vm/swappiness"
+
+#/proc/sys/vm/vfs_cache_pressure
+resource fd_vcp[fd]
+openat$vcp(fd const[AT_FDCWD], file ptr[in, string[procfs_vcp_file]], flags const[O_WRONLY], mode const[0]) fd_vcp
+write$vcp(fd fd_vcp, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_vcp_file = "/proc/sys/vm/vfs_cache_pressure"
+
+#/proc/sys/vm/watermark_boost_factor
+resource fd_wbf[fd]
+openat$wbf(fd const[AT_FDCWD], file ptr[in, string[procfs_wbf_file]], flags const[O_WRONLY], mode const[0]) fd_wbf
+write$wbf(fd fd_wbf, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_wbf_file = "/proc/sys/vm/watermark_boost_factor"
+
+#/proc/sys/vm/watermark_scale_factor
+resource fd_wsf[fd]
+openat$wsf(fd const[AT_FDCWD], file ptr[in, string[procfs_wsf_file]], flags const[O_WRONLY], mode const[0]) fd_wsf
+write$wsf(fd fd_wsf, val ptr[in, string[vm_ratio_value]], len len[val])
+procfs_wsf_file = "/proc/sys/vm/watermark_scale_factor"
+
+vm_ratio_value = "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"
+
+#/proc/sys/vm/compact_memory
+resource fd_cm[fd]
+openat$cm(fd const[AT_FDCWD], file ptr[in, string[procfs_cm_file]], flags const[O_WRONLY], mode const[0]) fd_cm
+write$cm(fd fd_cm, val ptr[in, string[vm_bool_value]], len len[val])
+procfs_cm_file = "/proc/sys/vm/compact_memory"
+
+#/proc/sys/vm/compact_unevictable_allowed
+resource fd_cua[fd]
+openat$cua(fd const[AT_FDCWD], file ptr[in, string[procfs_cua_file]], flags const[O_WRONLY], mode const[0]) fd_cua
+write$cua(fd fd_cua, val ptr[in, string[vm_bool_value]], len len[val])
+procfs_cua_file = "/proc/sys/vm/compact_unevictable_allowed"
+
+#/proc/sys/vm/legacy_va_layout
+resource fd_lvl[fd]
+openat$lvl(fd const[AT_FDCWD], file ptr[in, string[procfs_lvl_file]], flags const[O_WRONLY], mode const[0]) fd_lvl
+write$lvl(fd fd_lvl, val ptr[in, string[vm_bool_value]], len len[val])
+procfs_lvl_file = "/proc/sys/vm/legacy_va_layout"
+
+#/proc/sys/vm/memory_failure_early_kill
+resource fd_mfek[fd]
+openat$mfek(fd const[AT_FDCWD], file ptr[in, string[procfs_mfek_file]], flags const[O_WRONLY], mode const[0]) fd_mfek
+write$mfek(fd fd_mfek, val ptr[in, string[vm_bool_value]], len len[val])
+procfs_mfek_file = "/proc/sys/vm/memory_failure_early_kill"
+
+#/proc/sys/vm/memory_failure_recovery
+resource fd_mfr[fd]
+openat$mfr(fd const[AT_FDCWD], file ptr[in, string[procfs_mfr_file]], flags const[O_WRONLY], mode const[0]) fd_mfr
+write$mfr(fd fd_mfr, val ptr[in, string[vm_bool_value]], len len[val])
+procfs_mfr_file = "/proc/sys/vm/memory_failure_recovery"
+
+#/proc/sys/vm/oom_dump_tasks
+resource fd_odt[fd]
+openat$odt(fd const[AT_FDCWD], file ptr[in, string[procfs_odt_file]], flags const[O_WRONLY], mode const[0]) fd_odt
+write$odt(fd fd_odt, val ptr[in, string[vm_bool_value]], len len[val])
+procfs_odt_file = "/proc/sys/vm/oom_dump_tasks"
+
+#/proc/sys/vm/oom_kill_allocating_task
+resource fd_okat[fd]
+openat$okat(fd const[AT_FDCWD], file ptr[in, string[procfs_okat_file]], flags const[O_WRONLY], mode const[0]) fd_okat
+write$okat(fd fd_okat, val ptr[in, string[vm_bool_value]], len len[val])
+procfs_okat_file = "/proc/sys/vm/oom_kill_allocating_task"
+
+#/proc/sys/vm/unprivileged_userfaultfd
+resource fd_uu[fd]
+openat$uu(fd const[AT_FDCWD], file ptr[in, string[procfs_uu_file]], flags const[O_WRONLY], mode const[0]) fd_uu
+write$uu(fd fd_uu, val ptr[in, string[vm_bool_value]], len len[val])
+procfs_uu_file = "/proc/sys/vm/unprivileged_userfaultfd"
+
+vm_bool_value = "0", "1"
+
+#/proc/sys/vm/dirtytime_expire_seconds
+resource fd_des[fd]
+openat$des(fd const[AT_FDCWD], file ptr[in, string[procfs_des_file]], flags const[O_WRONLY], mode const[0]) fd_des
+write$des(fd fd_des, val ptr[in, string[des_value]], len len[val])
+procfs_des_file = "/proc/sys/vm/dirtytime_expire_seconds"
+des_value = "21600", "43200", "86400"
+
+#/proc/sys/vm/drop_caches
+resource fd_dc[fd]
+openat$dc(fd const[AT_FDCWD], file ptr[in, string[procfs_dc_file]], flags const[O_WRONLY], mode const[0]) fd_dc
+write$dc(fd fd_dc, val ptr[in, string[dc_value]], len len[val])
+procfs_dc_file = "/proc/sys/vm/drop_caches"
+dc_value = "1", "2", "3"
+
+#/proc/sys/vm/extfrag_threshold
+resource fd_et[fd]
+openat$et(fd const[AT_FDCWD], file ptr[in, string[procfs_et_file]], flags const[O_WRONLY], mode const[0]) fd_et
+write$et(fd fd_et, val ptr[in, string[et_value]], len len[val])
+procfs_et_file = "/proc/sys/vm/extfrag_threshold"
+et_value = "-1", "0", "250", "500", "750", "1000"
+
+#/proc/sys/vm/lowmem_reserve_ratio
+resource fd_lrr[fd]
+openat$lrr(fd const[AT_FDCWD], file ptr[in, string[procfs_lrr_file]], flags const[O_WRONLY], mode const[0]) fd_lrr
+write$lrr(fd fd_lrr, val ptr[in, string[lrr_value]], len len[val])
+procfs_lrr_file = "/proc/sys/vm/lowmem_reserve_ratio"
+
+lrr_value = "256 256 32  0   0", "512 256 32  0   0", "512 256 64  32   0"
+
+#/proc/sys/vm/max_map_count
+resource fd_mmc[fd]
+openat$mmc(fd const[AT_FDCWD], file ptr[in, string[procfs_mmc_file]], flags const[O_WRONLY], mode const[0]) fd_mmc
+write$mmc(fd fd_mmc, val ptr[in, string[mmc_value]], len len[val])
+procfs_mmc_file = "/proc/sys/vm/max_map_count"
+mmc_value = "8192", "23352", "65530"
+
+#/proc/sys/vm/min_free_kbytes
+resource fd_mfk[fd]
+openat$mfk(fd const[AT_FDCWD], file ptr[in, string[procfs_mfk_file]], flags const[O_WRONLY], mode const[0]) fd_mfk
+write$mfk(fd fd_mfk, val ptr[in, string[mfk_value]], len len[val])
+procfs_mfk_file = "/proc/sys/vm/min_free_kbytes"
+
+#/proc/sys/vm/overcommit_kbytes
+resource fd_ok[fd]
+openat$ok(fd const[AT_FDCWD], file ptr[in, string[procfs_ok_file]], flags const[O_WRONLY], mode const[0]) fd_ok
+write$ok(fd fd_ok, val ptr[in, string[mfk_value]], len len[val])
+procfs_ok_file = "/proc/sys/vm/overcommit_kbytes"
+mfk_value = "1024", "23352", "65530"
+
+#/proc/sys/vm/mmap_min_addr
+resource fd_mma[fd]
+openat$mma(fd const[AT_FDCWD], file ptr[in, string[procfs_mma_file]], flags const[O_WRONLY], mode const[0]) fd_mma
+write$mma(fd fd_mma, val ptr[in, string[mma_value]], len len[val])
+procfs_mma_file = "/proc/sys/vm/mmap_min_addr"
+mma_value = "0", "32768", "65536"
+
+#/proc/sys/vm/mmap_rnd_bits
+resource fd_mrb[fd]
+openat$mrb(fd const[AT_FDCWD], file ptr[in, string[procfs_mrb_file]], flags const[O_WRONLY], mode const[0]) fd_mrb
+write$mrb(fd fd_mrb, val ptr[in, string[mrb_value]], len len[val])
+procfs_mrb_file = "/proc/sys/vm/mmap_rnd_bits"
+mrb_value = "28", "29", "30", "31", "32"
+
+#/proc/sys/vm/numa_zonelist_order
+resource fd_nzo[fd]
+openat$nzo(fd const[AT_FDCWD], file ptr[in, string[procfs_nzo_file]], flags const[O_WRONLY], mode const[0]) fd_nzo
+write$nzo(fd fd_nzo, val ptr[in, string[nzo_value]], len len[val])
+procfs_nzo_file = "/proc/sys/vm/numa_zonelist_order"
+nzo_value = "default", "node"
+
+#/proc/sys/vm/overcommit_memory Values 1 and 2 causes issues for overcommit_memory and the SUT.
+resource fd_om[fd]
+openat$om(fd const[AT_FDCWD], file ptr[in, string[procfs_om_file]], flags const[O_WRONLY], mode const[0]) fd_om
+write$om(fd fd_om, val ptr[in, string["0"]], len len[val])
+procfs_om_file = "/proc/sys/vm/overcommit_memory"
+
+#/proc/sys/vm/panic_on_oom
+resource fd_poom[fd]
+openat$poom(fd const[AT_FDCWD], file ptr[in, string[procfs_poom_file]], flags const[O_WRONLY], mode const[0]) fd_poom
+write$poom(fd fd_poom, val ptr[in, string[poom_value]], len len[val])
+procfs_poom_file = "/proc/sys/vm/panic_on_oom"
+poom_value = "0", "1", "2"
+
+#/proc/sys/vm/user_reserve_kbytes
+resource fd_urk[fd]
+openat$urk(fd const[AT_FDCWD], file ptr[in, string[procfs_urk_file]], flags const[O_WRONLY], mode const[0]) fd_urk
+write$urk(fd fd_urk, val ptr[in, string[urk_value]], len len[val])
+procfs_urk_file = "/proc/sys/vm/user_reserve_kbytes"
+urk_value = "32768", "65536", "131072", "262144"
+
+#/proc/sys/vm/zone_reclaim_mode
+resource fd_zrm[fd]
+openat$zrm(fd const[AT_FDCWD], file ptr[in, string[procfs_zrm_file]], flags const[O_WRONLY], mode const[0]) fd_zrm
+write$zrm(fd fd_zrm, val ptr[in, string[zrm_value]], len len[val])
+procfs_zrm_file = "/proc/sys/vm/zone_reclaim_mode"
+zrm_value = "0", "1", "2", "4"
